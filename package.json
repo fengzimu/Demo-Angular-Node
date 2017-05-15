@@ -1,0 +1,10 @@
+{
+  "name": "angular-contactList",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A starter project for AngularJS",
+  "license": "MIT",
+  "dependencies": {
+    "~jade": "~1.11.0"
+  }
+}
