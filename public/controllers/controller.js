@@ -1,8 +1,8 @@
 /*
 * @Author: YADONG
 * @Date:   2017-05-12 23:00:59
-* @Last Modified by:   YADONG
-* @Last Modified time: 2017-05-15 23:19:51
+* @Last Modified by:   fengzimu
+* @Last Modified time: 2017-05-17 22:44:24
 */
 
 //'use strict';
@@ -34,5 +34,31 @@ application.controller("appController", ['$scope', '$http', function($scope, $ht
 			console.log(response);
 			refresh();
 		});
+	};
+
+	$scope.removeContact = function(id){
+		console.log("remove: " + id);
+		$http.delete('/contactList/'+ id).then(function success(response){
+			refresh();
+		});
+	};
+
+	$scope.editContact = function(id){
+		console.log("edit: " + id);
+		$http.get('/contactList/' + id).then(function success(response){
+			$scope.newContact = response.data;
+		});
+	};
+
+	$scope.updateContact = function(){
+		var id = $scope.newContact._id;
+		console.log("update: " + id);
+		$http.put('/contactList/'+ id, $scope.newContact).then(function success(response){
+			refresh();
+		});
+	};
+
+	$scope.clearContact =function(){
+		$scope.newContact = {};
 	};
 }]);
